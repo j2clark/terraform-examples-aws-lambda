@@ -11,7 +11,7 @@ Terraform configuration is divided into 3 parts:
 
 I work primarily on Windows OS, and the purpose of this repo is to capture terraform/AWS details, not to accomodate every OS under the sun. 
 
-Everything has been tested and works at the time of publish, but this being AWS infrastructure and code at some point it will no longer supported. One of the many hidden costs of using AWS.    
+Everything has been tested and works at the time of publish, but this being AWS infrastructure at some point it will no longer be supported. One of the many hidden costs of using AWS.    
 
 I am assuming several non-trivial requirements have been set up and are working:
 * Nodejs (for client code)
