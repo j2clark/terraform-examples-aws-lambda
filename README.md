@@ -69,7 +69,7 @@ The process is exactly opposite of standing up
     You can use aws cli to copy this file locally then run `terraform destroy`:
     ```shell
     cd code/terraform
-    aws s3 cp s3://terraform-examples-aws-lambda/main/terraform/init.tfvars init.tfvars  
+    aws s3 cp s3://terraform-examples-aws-lambda/main/terraform/init.tfvars init.tfvars
     aws s3 cp s3://terraform-examples-aws-lambda/main/terraform/lambda.tfvars lambda.tfvars
     terraform init -backend-config="init.tfvars" 
     terraform destroy -var-file="lambda.tfvars"

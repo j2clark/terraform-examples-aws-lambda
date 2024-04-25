@@ -3,3 +3,5 @@
 /**/.terraform.lock.hcl
 /code/terraform/lambda.tfvars
 /code/terraform/init.tfvars
+/code/terraform/basic.zip
+/code/terraform/functionurl.zip
