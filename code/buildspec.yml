@@ -33,14 +33,11 @@ phases:
       - terraform init -backend-config="bucket=$ARTIFACTS" -backend-config="key=$BRANCH/terraform/lambda.tfstate"
 
       - echo "apply terraform"
-#      - terraform plan -var "project_name=$PROJECT_NAME" -var "github_repo=$GITHUB_REPO"  -var "branch=$BRANCH"  -var "artifacts=$ARTIFACTS"
+#      - terraform plan -var "project_name=$PROJECT_NAME" -var "github_repo=$GITHUB_REPO" -var "branch=$BRANCH"  -var "artifacts=$ARTIFACTS"
 
-      - touch application.tfvars
-#      - printf "string" >> application.tfvars
-      - printf "project_name=$PROJECT_NAME\ngithub_repo=$GITHUB_REPO" > application.tfvars
-#      - printf "github_repo=$GITHUB_REPO" > application.tfvars
-#      - echo "branch=$BRANCH" > application.tfvars
-#      - echo "artifacts=$ARTIFACTS > application.tfvars
-      - aws s3 cp application.tfvars s3://${ARTIFACTS}/${BRANCH}/terraform/application.tfvars
+      - touch lambda.tfvars
+      - printf "project_name=$PROJECT_NAME\ngithub_repo=$GITHUB_REPO\branch=$BRANCH\nartifacts=$ARTIFACTS" > lambda.tfvars
+
+      - aws s3 cp lambda.tfvars s3://${ARTIFACTS}/${BRANCH}/terraform/lambda.tfvars
 
       - terraform apply -auto-approve -var "project_name=$PROJECT_NAME" -var "github_repo=$GITHUB_REPO" -var "branch=$BRANCH"  -var "artifacts=$ARTIFACTS"
