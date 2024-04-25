@@ -18,7 +18,6 @@ resource "aws_lambda_function" "lambda_functionurl" {
 
 resource "aws_lambda_function_url" "functionurl" {
   function_name      = aws_lambda_function.lambda_functionurl.function_name
-  qualifier          = "$LATEST"
   authorization_type = "NONE"
   /*cors {
     allow_credentials = true

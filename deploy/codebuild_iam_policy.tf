@@ -40,7 +40,7 @@ data "aws_iam_policy_document" "codebuild_policy_document" {
   }
 
   statement {
-    sid     = "ManageLambdaFunctions"
+    sid     = "ManageLambdas"
     effect  = "Allow"
     actions = [
       "lambda:GetFunction",
@@ -53,6 +53,19 @@ data "aws_iam_policy_document" "codebuild_policy_document" {
     resources = [
       "arn:aws:lambda:${data.aws_region.current.id}:${data.aws_caller_identity.current.account_id}:function:${local.project_name}-${var.branch}*"
     ]
+  }
+
+  statement {
+    sid     = "ManageLambdaFunctionUrls"
+    effect  = "Allow"
+    actions = [
+      "lambda:UpdateFunctionCode",
+
+    ]
+    resources = [
+      "arn:aws:lambda:${data.aws_region.current.id}:${data.aws_caller_identity.current.account_id}:function:${local.project_name}-${var.branch}*"
+    ]
+
   }
 
   statement {
