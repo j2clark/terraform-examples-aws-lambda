@@ -1,11 +1,11 @@
 data "archive_file" "lambda_package" {
   type = "zip"
-  source_file = "../src/index.js"
+  source_file = "../lambda_functionurl/index.js"
   output_path = "index.zip"
 }
 
-resource "aws_lambda_function" "html_lambda" {
-  function_name = "${var.project_name}-${var.branch}-helloworld"
+resource "aws_lambda_function" "lambda_functionurl" {
+  function_name = "${var.project_name}-${var.branch}-functionurl"
   filename = "index.zip"
   role = data.aws_iam_role.execution_role.arn
   handler = "index.handler"
@@ -15,6 +15,6 @@ resource "aws_lambda_function" "html_lambda" {
   tags = local.common_tags
 }
 
-output "lambda_function" {
-  value = aws_lambda_function.html_lambda.function_name
+output "lambda_functionurl" {
+  value = aws_lambda_function.lambda_functionurl.function_name
 }

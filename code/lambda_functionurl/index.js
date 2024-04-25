@@ -7,7 +7,7 @@ exports.handler = async (event) => {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            message: "Hello from Lambda!"
+            message: "Hello from  Lambda_FunctionURL!"
             // Add more data as needed
         })
     };
