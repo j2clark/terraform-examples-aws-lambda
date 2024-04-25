@@ -10,43 +10,18 @@ phases:
     commands:
       - echo install
 
-#      - python --version
-
       - echo "install terraform"
       - curl -s -qL -o terraform_install.zip https://releases.hashicorp.com/terraform/1.7.4/terraform_1.7.4_linux_amd64.zip
       - unzip terraform_install.zip -d /usr/bin/
       - chmod +x /usr/bin/terraform
     finally:
       - terraform --version
-      #     we only work within code
+#     we only work within code
       - cd code
-
-  pre_build:
-    commands:
-      - echo pre_build
-
-      # this can be used to install any 3rd part jars into maven
-      - mvn validate
-
-#      - echo "install wheel"
-#      - pip install wheel
-
-  build:
-    commands:
-#      - echo "build pyshell wheel"
-#      - python setup.py bdist_wheel
-#      #      we only need to move if we are building multiple wheels
-#      - mv dist/pyshell_framework-1.0-py3-none-any.whl ./pyshell_framework-1.0-py3-none-any.whl
-      - mvn clean install
-      - mv target/$PROJECT_NAME-1.0.jar ./$PROJECT_NAME-1.0.zip
 
   post_build:
     commands:
       - echo post_build
-
-#      - echo "upload script and wheel to s3"
-#      - aws s3 cp src/glue-script.py s3://${ARTIFACTS}/${BRANCH}/scripts/glue-script.py
-#      - aws s3 cp pyshell_framework-1.0-py3-none-any.whl s3://${ARTIFACTS}/${BRANCH}/wheels/pyshell_framework-1.0-py3-none-any.whl
 
       - echo "initialize terraform"
       - cd terraform
