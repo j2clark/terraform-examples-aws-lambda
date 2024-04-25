@@ -2,3 +2,4 @@
 /**/terraform.tfstate.backup
 /**/.terraform.lock.hcl
 /code/terraform/lambda.tfvars
+/code/terraform/init.tfvars
