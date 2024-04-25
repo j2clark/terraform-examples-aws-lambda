@@ -29,9 +29,10 @@ resource "aws_lambda_function_url" "functionurl" {
   }*/
 }
 
-
-
-
 output "lambda_functionurl" {
   value = aws_lambda_function.lambda_functionurl.function_name
+}
+
+output "lambda_functionurl_endpoint" {
+  value = aws_lambda_function_url.functionurl.function_url
 }

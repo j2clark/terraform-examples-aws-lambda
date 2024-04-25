@@ -4,6 +4,8 @@ variable "branch" {
 }
 
 locals {
+  region       = data.aws_region.current.id
+  account_id   = data.aws_caller_identity.current.id
   project_name = "terraform-examples-aws-lambda"
   github_repo  = "j2clark/terraform-examples-aws-lambda"
   buildspec    = "code/buildspec.yml"

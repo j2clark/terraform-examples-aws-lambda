@@ -20,7 +20,7 @@ data "aws_iam_policy_document" "codebuild_policy_document" {
       "logs:PutLogEvents"
     ]
     resources = [
-      "arn:aws:logs:${data.aws_region.current.id}:${data.aws_caller_identity.current.account_id}:log-group:/aws/codebuild/*"
+      "arn:aws:logs:${local.region}:${local.account_id}:log-group:/aws/codebuild/*"
     ]
   }
 
@@ -35,7 +35,7 @@ data "aws_iam_policy_document" "codebuild_policy_document" {
       "codebuild:BatchPutCodeCoverages"
     ]
     resources = [
-      "arn:aws:codebuild:${data.aws_region.current.id}:${data.aws_caller_identity.current.account_id}:report-group/${local.project_name}*"
+      "arn:aws:codebuild:${local.region}:${local.account_id}:report-group/${local.project_name}*"
     ]
   }
 
@@ -51,7 +51,7 @@ data "aws_iam_policy_document" "codebuild_policy_document" {
       "lambda:TagResource"
     ]
     resources = [
-      "arn:aws:lambda:${data.aws_region.current.id}:${data.aws_caller_identity.current.account_id}:function:${local.project_name}-${var.branch}*"
+      "arn:aws:lambda:${local.region}:${local.account_id}:function:${local.project_name}-${var.branch}*"
     ]
   }
 
@@ -59,11 +59,14 @@ data "aws_iam_policy_document" "codebuild_policy_document" {
     sid     = "ManageLambdaFunctionUrls"
     effect  = "Allow"
     actions = [
+      "lambda:GetFunctionUrlConfig",
+      "lambda:CreateFunctionUrlConfig",
+      "lambda:DeleteFunctionUrlConfig",
       "lambda:UpdateFunctionCode",
-
+      "lambda:AddPermission"
     ]
     resources = [
-      "arn:aws:lambda:${data.aws_region.current.id}:${data.aws_caller_identity.current.account_id}:function:${local.project_name}-${var.branch}*"
+      "arn:aws:lambda:${local.region}:${local.account_id}:function:${local.project_name}-${var.branch}*"
     ]
 
   }
