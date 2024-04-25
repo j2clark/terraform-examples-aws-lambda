@@ -5,7 +5,7 @@ data "archive_file" "lambda_functionurl_iam_package" {
 }
 
 resource "aws_lambda_function" "lambda_functionurl_iam" {
-  function_name = "${var.project_name}-${var.branch}-functionurl"
+  function_name = "${var.project_name}-${var.branch}-functionurl_iam"
   filename = "functionurl_iam.zip"
   role = data.aws_iam_role.execution_role.arn
   handler = "index.handler"
