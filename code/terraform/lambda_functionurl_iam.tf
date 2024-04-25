@@ -18,7 +18,7 @@ resource "aws_lambda_function" "lambda_functionurl_iam" {
 
 resource "aws_lambda_function_url" "functionurl_iam" {
   function_name      = aws_lambda_function.lambda_functionurl_iam.function_name
-  authorization_type = "IAM"
+  authorization_type = "AWS_IAM"
   /*cors {
     allow_credentials = true
     allow_origins     = ["*"]
