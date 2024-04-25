@@ -7,11 +7,14 @@ Terraform configuration is divided into 3 parts:
 2. **Deployment**: CodeBuild IAM and Project to deploy a branch or branches. I decided I wanted a separate CodeBuild ROle per branch, otherwise CodeBuild role would belong under infrastructure.
 3. **Application**: The Glue Job(s). Created and updated as part of deployment
 
-## Assumptions about you
+### Some notes:
 
-You have:
-* a decent of understanding of terraform (mine is just that, nothing deep) 
-* a working knowledge of AWS as well as an account
+I work primarily on Windows OS, and the purpose of this repo is to capture terraform/AWS details, not to accomodate every OS under the sun. 
+
+Everything has been tested and works at the time of publish, but this being AWS infrastructure and code at some point it will no longer supported. One of the many hidden costs of using AWS.    
+
+I am assuming several non-trivial requirements have been set up and are working:
+* Nodejs (for client code)
 * AWS ClI installed and configured
 * GitHub installed and configured
 
@@ -19,7 +22,11 @@ You have:
 
 * IAM: Role and Policy
 * S3: For application terraform tfstate
-* Lambda
+* Lambda: 
+  * Simple
+  * FunctionURLs 
+    * Public
+    * IAM Secured 
 * CodeBuild + WebHook for GitHub
 
 ### Standing up a Lambda:
