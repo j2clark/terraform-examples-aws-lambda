@@ -36,9 +36,9 @@ phases:
 #      - terraform plan -var "project_name=$PROJECT_NAME" -var "github_repo=$GITHUB_REPO"  -var "branch=$BRANCH"  -var "artifacts=$ARTIFACTS"
 
       - touch application.tfvars
-      - printf "string" >> application.tfvars
-#      - echo "project_name=$PROJECT_NAME" > application.tfvars
-#      - echo "github_repo=$GITHUB_REPO" > application.tfvars
+#      - printf "string" >> application.tfvars
+      - printf "project_name=$PROJECT_NAME" > application.tfvars
+      - printf "github_repo=$GITHUB_REPO" > application.tfvars
 #      - echo "branch=$BRANCH" > application.tfvars
 #      - echo "artifacts=$ARTIFACTS > application.tfvars
       - aws s3 cp application.tfvars s3://${ARTIFACTS}/${BRANCH}/terraform/application.tfvars
