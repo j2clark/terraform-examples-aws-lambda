@@ -33,10 +33,10 @@ output "lambda_functionurl_iam" {
   value = aws_lambda_function.lambda_functionurl_iam.function_name
 }
 
-output "lambda_functionurl_Iam_endpoint" {
+output "lambda_functionurl_iam_endpoint" {
   value = aws_lambda_function_url.functionurl_iam.function_url
 }
 
-output "lambda_functionurl_iam_client" {
-  value = "node client_functionurl.js HOST=\"${aws_lambda_function_url.functionurl.url_id}.lambda-url.${data.aws_region.current.id}.on.aws\" ENDPOINT=\"/hello\" ACCESS_KEY_ID=\"ABC123\" SECRET_ACCESS_KEY=\"XYZ098\" REGION=\"us-west-1\""
+output "lambda_functionurl_iam_host" {
+  value = "${aws_lambda_function_url.functionurl.url_id}.lambda-url.${data.aws_region.current.id}.on.aws"
 }
