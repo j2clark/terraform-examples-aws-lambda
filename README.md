@@ -21,13 +21,14 @@ I am assuming several non-trivial requirements have been set up and are working:
 ## AWS Components Created
 
 * IAM: Role and Policy
+* CodeBuild + WebHook for GitHub
 * S3: For application terraform tfstate
 * Lambda: 
   * Simple
   * FunctionURLs 
     * Public
     * IAM Secured 
-* CodeBuild + WebHook for GitHub
+
 
 ### Standing up a Lambda:
 
