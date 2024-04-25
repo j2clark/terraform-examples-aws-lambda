@@ -1,12 +1,12 @@
 data "archive_file" "lambda_basic_package" {
   type = "zip"
   source_file = "../lambda_basic/index.js"
-  output_path = "index.zip"
+  output_path = "basic-index.zip"
 }
 
 resource "aws_lambda_function" "basic" {
   function_name = "${var.project_name}-${var.branch}-basic"
-  filename = "index.zip"
+  filename = "basic-index.zip"
   role = data.aws_iam_role.execution_role.arn
   handler = "index.handler"
   runtime = "nodejs18.x"
