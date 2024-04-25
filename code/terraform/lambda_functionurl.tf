@@ -38,5 +38,5 @@ output "lambda_functionurl_endpoint" {
 }
 
 output "lambda_functionurl_client" {
-  value = aws_lambda_function_url.functionurl.id
+  value = "node client_functionurl.js HOST=\"${aws_lambda_function_url.functionurl.url_id}.lambda-url.${data.aws_region.current.id}.on.aws\" ENDPOINT=\"/hello\""
 }
