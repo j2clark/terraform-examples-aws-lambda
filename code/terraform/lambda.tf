@@ -14,3 +14,7 @@ resource "aws_lambda_function" "html_lambda" {
 
   tags = local.common_tags
 }
+
+output "lambda_function" {
+  value = aws_lambda_function.html_lambda.function_name
+}
