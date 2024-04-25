@@ -36,3 +36,7 @@ output "lambda_functionurl" {
 output "lambda_functionurl_endpoint" {
   value = aws_lambda_function_url.functionurl.function_url
 }
+
+output "lambda_functionurl_client" {
+  value = aws_lambda_function_url.functionurl.id
+}
