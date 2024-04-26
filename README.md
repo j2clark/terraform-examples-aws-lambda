@@ -80,7 +80,7 @@ The process is exactly opposite of standing up
     aws s3 cp s3://terraform-examples-aws-lambda/main/terraform/init.tfvars init.tfvars
     aws s3 cp s3://terraform-examples-aws-lambda/main/terraform/application.tfvars lambda.tfvars
     terraform init -backend-config="init.tfvars" 
-    terraform destroy -var-file="lambda.tfvars"
+    terraform destroy -var-file="application.tfvars"
     ```
 
 2. Tear down the CodeBuild using terraform
